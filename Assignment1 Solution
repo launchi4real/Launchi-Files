@@ -1,0 +1,83 @@
+# Matlab-Code
+%% Assignment Format
+%% Question 1
+% Q1: Find the magnitude of the Vector A = (-1 7 3 2).
+% ----- Solution ---- %
+clc;clear; format compact
+A = [-1 7 3 2];
+magA = sqrt(sum(A.*A))
+%% Question 2
+% Q1: Find the magnitude of the Vector A = (-1+i 7i 3 -2-2i).
+% ----- Solution ---- %
+B = [-1+i 7*i 3 -2-2*i];
+magB = sqrt(sum(conj(B).*B))
+%% Question 3
+%Consider the numbers 1,2,3. Enter these as components of a column vector
+%and as components of a row vector.
+% ----- Solution ---- %
+C = [1 2 3], D = [1,2,3]  % Column Vector Format
+E = [1;2;3], F = [1 2 3]' % Row Vector Format
+%% Question 4
+% Given A = [1;2;3]; B = [4;5;6];, find the array product of the two
+% vectors.
+% ----- Solution ---- %
+G = [1;2;3]; H = [4;5;6];
+I = G.*H % Array Product
+%% Question 5
+% What command would create a 5 x 5 Matrix with ones on the diagonal and 
+% zeros everywhere else?
+% ----- Solution ---- %
+J = eye(5) % Identity Matrix
+%% Question 6
+% Consider the two matrices 
+%     (8 7 11)      (2  1 1)
+% A = (6 5 -1), B = (-1 6 4) and compute their array and Matrix products.
+%     (0 2 -8)      (2  2 2)
+% ----- Solution ---- %
+K = [8 7 11
+    6 5 -1
+    0 2 -8];
+L = [2 1 1;-1 6 4; 2 2 2];
+M = K.*L % Array Product
+N = K*L  % Maxtrix Product
+%% Question 7
+% Suppose that 
+%    (1 2 3)                       (7 8 9)
+% A =(4 5 6). Use it to create B = (7 8 9)
+%    (7 8 9)                       (4 5 6)
+% ----- Solution ---- %
+O = [1 2 3;4 5 6;7 8 9];
+P = [O(3,:);O(3,:);O(2,:)]
+Q = O([3,3,2],:) % Alternate Approach
+%% Question 8
+% Find a solution to the following set of Equations:
+% x+2y+3z=12
+% -4x+y+2z=13
+% 9y-8z=-1
+% What is the determinant of the coefficient Matrix?
+% ----- Solution ---- %
+R = [1 2 3;-4 1 2;0 9 -8]; S=[12;13;-1];
+T = R\S % Solution
+U = det(R) % Determinant
+%% Question 9
+% Does a solution to the following system Exist? What is it?
+% x-2y+3z=1
+% x+4y+3z=2
+% 2x+8y+z=3
+% ----- Solution ---- %
+V = [1 -2 3;1 4 3;2 8 1]; W = [1;2;3]; 
+if rank(V)~=rank([V W])
+    disp('No Solution')
+else
+    disp('Solution Exist')
+    X = V\W %B part of the Question
+end
+%% Question 10
+%Use LU decomposition to find a solution to the system:
+% x+7y-9z=12
+% 2x-y+4z=16
+% z+y-7z=16
+% ----- Solution ---- %
+Y = [1 7 -9;2 -1 4;1 1 -7]; Z = [12;16;16];
+[L U]=lu(Y);
+x = U\(L\Z)
